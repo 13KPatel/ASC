@@ -85,13 +85,13 @@ footer{background:var(--purple);color:#fff;padding:16px 20px;font-size:15px}
 (function(){
     const famt = { contactName: 'Financial Assessment and Monitoring Team', contactDetail: '020 8736 6802 · jat@harrow.gov.uk' };
     const invoice = { contactName: 'Invoice Payers Team', contactDetail: '020 8901 2615 · invoicepayers@harrow.gov.uk' };
-    const stepNames = ['Ask for help', 'Social worker gets in touch', 'Financial form and estimate', 'Care assessment visit', 'Outcome letter', 'Monthly invoice', 'Yearly update'];
+    const stepNames = ['Ask for help', 'Social worker gets in touch', 'Financial assessment starts', 'Care assessment visit', 'Outcome letter', 'Monthly invoice', 'Yearly update'];
     const list = [
       { id: 'ack', label: 'Financial Assistance and Acknowledgement Letter', hint: 'Signing to say you know about paying', step: 3,
         what: 'This letter explains that you may get help with the cost of your care, and that we need to do a financial assessment to work out what, if anything, you pay. You are asked to sign the form at the back, usually around the time of your care assessment visit.',
         todo: ['By signing, you confirm you have received the Paying for your Care and Support factsheet.', 'You confirm you understand you may need to pay towards your care, depending on your money.', 'You confirm you will give us your financial information, and that we cannot help with the cost if your form is not returned.', 'Tick how you would like to fill in the financial assessment form: online, with an officer visiting or phoning you, or on your own by post.', 'If someone manages your money for you, they can sign instead.'],
         deadline: 'You will usually get an estimate of your charge first. Your final amount may be different, and your charges can change over time.',
-        next: 'you will get, or may already have, your financial assessment form and an estimate of your charge.', ...famt },
+        next: 'fill in your financial assessment form. You will also get an estimate of your charge.', ...famt },
       { id: 'fa', label: 'Financial assessment form', hint: 'Questions about your money', step: 3,
         what: 'This form asks about your income, savings and assets. We use it to work out how much you will pay towards your care. It often arrives around the same time as your care assessment.',
         todo: ['Fill in the form online. Include all your income and savings: we will leave out anything that does not count.', 'Upload proof using your financial assessment reference, for example bank statements for the last three months, pension slips and benefit letters.', 'Have your National Insurance number ready.', 'Only your own money is looked at. Your husband, wife or partner does not have to share their finances. Money in a joint account is usually treated as shared equally.', 'If someone else fills in the form for you, tell us how they can act for you, for example a Power of Attorney.', 'If you need help with the form, ask us and we can visit you at home.'],
@@ -117,6 +117,11 @@ footer{background:var(--purple);color:#fff;padding:16px 20px;font-size:15px}
         todo: ['Check the amount and date are right.', 'Make sure the money is in your account on the payment date.', 'You do not need to do anything else.'],
         deadline: '',
         next: 'we will tell you at least 10 days before if the amount or date changes.', ...invoice },
+      { id: 'arrears', label: 'Payment reminder, final demand or legal letter', hint: 'An unpaid invoice', step: 6,
+        what: 'These letters mean an invoice has not been paid. There are three, sent in this order. The title at the top of your letter tells you which one you have.',
+        todo: ['Payment reminder: the first letter. Please pay the overdue invoice.', 'Final demand: you have 14 days to pay before your case may be passed to the council’s legal team or a debt recovery agency.', 'Legal letter: you have 7 days to pay in full or offer a way to pay. After that, legal action may start, which could lead to a county court judgment and extra costs.', 'If you cannot pay, contact us as early as you can. You can also ask us to look at your charge again.', 'Free, independent advice: Citizens Advice Harrow 0808 250 5705, Age UK Harrow 020 8861 7980.'],
+        deadline: 'Please do not ignore these letters. The sooner you contact us, the more options there are.',
+        next: 'once you have contacted us, we will talk through your options.', ...invoice },
       { id: 'uplift', label: 'Yearly update (uplift) letter', hint: 'Your charge for the new year', step: 7,
         what: 'Every April we recheck everyone’s charge, because benefits and pensions usually go up. This letter tells you your new weekly amount.',
         todo: ['Check the new amount.', 'If your circumstances have changed, tell us.'],
@@ -126,12 +131,8 @@ footer{background:var(--purple);color:#fff;padding:16px 20px;font-size:15px}
         what: 'If we have not reviewed your finances for three years, we may send you this form so we can update your details.',
         todo: ['Fill in the form and send it back.', 'Include proof of any changes to your income or savings.'],
         deadline: 'Tell us about any changes within one month of them happening.',
-        next: 'we will write to you if your charge changes.', ...famt },
-      { id: 'arrears', label: 'Payment reminder, final demand or legal letter', hint: 'An unpaid invoice', step: 6,
-        what: 'These letters mean an invoice has not been paid. There are three, sent in this order. The title at the top of your letter tells you which one you have.',
-        todo: ['Payment reminder: the first letter. Please pay the overdue invoice.', 'Final demand: you have 14 days to pay before your case may be passed to the council’s legal team or a debt recovery agency.', 'Legal letter: you have 7 days to pay in full or offer a way to pay. After that, legal action may start, which could lead to a county court judgment and extra costs.', 'If you cannot pay, contact us as early as you can. You can also ask us to look at your charge again.', 'Free, independent advice: Citizens Advice Harrow 0808 250 5705, Age UK Harrow 020 8861 7980.'],
-        deadline: 'Please do not ignore these letters. The sooner you contact us, the more options there are.',
-        next: 'once you have contacted us, we will talk through your options.', ...invoice }
+        next: 'we will write to you if your charge changes.', ...famt }
+
     ];
 
 const calc = [
